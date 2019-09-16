@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+<div class="container">
+        <div class="row mt-5">
+                <!-- ADD addLocation -->
+                <div class="col-md-6 col-sm-12 text-right">
+                  <button class="btn btn-success" [routerLink]="['/addLocation',flag1]"> Add location</button>
+                </div>
+              </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>cityName</th>
+                    <th>cityArea</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  class="mb-5">
+                    <td>{{location.Address}}</td>
+                    <td>{{location.cityName}}</td>
+                    <td>{{location.cityArea}}</td>        
+                <div class="">
+                  <button class="btn btn-danger" [routerLink]="['/editLocation',flag2,location.id]" style="margin-left: 20px;">
+                    Edit</button>
+                    <button class="btn btn-danger" (click)="deleteLocation(location.id)" style="margin-left: 20px;">
+                    Delete</button>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="container">
+        <div class="col-md-6 col-sm-12 text-right">
+            <button class="btn btn-success" (click)="addLocation()"> Add location</button>
+        </div>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>cityName</th>
+                        <th>cityArea</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  class="mb-5">
+                        <td>{{location.Address}}</td>
+                        <td>{{location.cityName}}</td>
+                        <td>{{location.cityArea}}</td>
+                        <td>
+                            <div class="">
+                                <button class="btn btn-danger"
+                                    [routerLink]="['/editModel',flag2,location.id]"
+                                    style="margin-left: 20px;">
+                                    Edit</button>
+                                <button class="btn btn-danger"
+                                    (click)="deleteLocationlList(location.id)"
+                                    style="margin-left: 20px;">
+                                    Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="form-control" type="text"
+                                id="userName" placeholder="enter user name"
+                                ngModel
+                                name="userName" #userName="ngModel" required minlength="3" />
+                            <div class="red" *ngIf="userName.invalid && userName.touched">
+                                    user Name is required!
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text"
+                                id="Address" placeholder="enter Address name"
+                                ngModel
+                                name="Address" #Address="ngModel" required minlength="3"/>
+                            <div class="red" *ngIf="Address.invalid && Address.touched">
+                                    Address Name is required!
+                            </div>
+                        </td>
+    
+                        <td>
+                            <input class="form-control" type="text"
+                                id="cityName" placeholder="enter cityName"
+                                ngModel
+                                name="cityName" #cityName="ngModel" required
+                                minlength="3"/>
+                            <div class="red" *ngIf="cityName.invalid &&
+                                cityName.touched">
+                                city Name is required!
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text"
+                                id="cityArea" placeholder="enter cityArea"
+                                ngModel
+                                name="cityArea" #cityArea="ngModel" required
+                                minlength="3"/>
+                            <div class="red" *ngIf="cityArea.invalid &&
+                                cityArea.touched">
+                                city Area is required!
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <button type="submit" [disabled]="f.invalid"
+                                    class="btn btn-success">
+                                    add
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    
+    </div> -->

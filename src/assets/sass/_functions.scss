@@ -1,0 +1,101 @@
+//==================set BG IMAGE=============
+@mixin background-image($filePath,  $bgReapeat:no-repeat, $bgSize:cover) {
+    background-image: url($filePath);
+    background-repeat: $bgReapeat;
+    background-size: $bgSize;
+    // background-attachment: $bgAttachment;
+    // background-position: center;
+}
+//==================STYLE Font=============
+
+@mixin typoStyle($font:$RalewayFont, $size:1rem, $weight:400){
+	font-family: $font;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $size * 1.618;
+}
+//==================USE DEFAULT Fonts =============
+
+%regularsegoe{
+	@include typoStyle($RalewayFont, 1.1rem, 400);
+}
+%boldsegoe{
+	@include typoStyle($RalewayBoldFont, 1.6rem, bold);
+}
+%regularOpenSans{
+	@include typoStyle($RalewayFont, 1.2rem, 400);
+}
+%semisegoe{
+	@include typoStyle($RalewayBoldFont, 1.2rem, bold);
+}
+//==================BOX SHADOW =============
+
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
+	@if $inset {
+	  @each $vendor in $vendors {
+			#{$vendor}box-shadow: inset $top $left $blur $spread $color;
+		}
+	} @else {
+	  @each $vendor in $vendors {
+			#{$vendor}box-shadow: $top $left $blur $spread $color;
+		}
+	}
+}
+
+// ==================ROUNDED====================
+@mixin rounded($radius: 0.5em) {
+    @each $vendor in $vendors {
+          #{$vendor}border-radius: $radius;
+      }
+  }
+//==================STYLE BTN ===================
+%btn{
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 0.3rem 1rem;
+    &:hover{
+        background: $secondaryColor;
+    }
+}
+@mixin  button ($bg:$mainColor,$borderColor:$mainColor,$btncolor:white){
+    background-color: $bg;
+    border: 1px solid $borderColor;
+    padding: 0.3rem 1.3rem ;
+    color : $btncolor;
+}
+//==================STYLE line ===================
+
+%line{
+    // width: 25px;
+    // height: 1px;
+    // display: block;
+    // background: white;
+    // margin: 0 auto;
+    width: 50px;
+    height: 4px;
+    display: inline-block;
+    background-color: $secondaryColor;
+}
+// ==============SHARED================
+%title{
+    @extend %boldsegoe;
+    color: $mainColor;
+    text-transform: uppercase
+
+}
+
+%rating{
+    color: #FFDA44!important;
+    font-size: 25px;
+}
+%img-bg{
+    background: $secondaryColor;
+    padding: 10px 0 0 10px;
+}
+%bg{
+    background: $dashColor
+    // box-shadow: 0 1px 6px rgba(57, 73, 76, 0.35);
+    // padding: 40px 60px;
+    // background-color: #fff;
+}

@@ -1,0 +1,51 @@
+<div class="w-99">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">
+                <form [formGroup]="citiesForm" (ngSubmit)="onSubmit(citiesForm)">
+                    <!-- ADD CITIES -->
+                    <label for="">city Name : </label>
+                    <div class="form-group">
+                        <input type="text" placeholder="city Name" formControlName="name" minlength=3 maxlength="10" class="form-control">
+                        <span *ngIf="name.invalid && name.touched" class="grey
+                                d-block">
+                            <span *ngIf="name.errors['required']">
+                                this field is requiredf
+                            </span>
+                            <span *ngIf="name.errors &&
+                                    !name.errors['required']">
+                                city Name is incorrectt
+                            </span>
+                        </span>
+                    </div>
+                    <div class="grey" *ngIf="errorMsg1">
+                        {{errorMsg1}}
+                    </div>
+                    <div class="form-group">
+                        <label for="">city code : +0</label>
+                        <span></span> <input type="text" placeholder="city Code" max="98" maxlength="2" min="0"
+                            onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+                            formControlName="code" class="form-control">
+                        <span *ngIf="code.invalid && code.touched" class="grey
+                                d-block">
+                            <span *ngIf="code.errors['required']">
+                                this field is required
+                            </span>
+                            <span *ngIf="code.errors&&
+                                    !code.errors['required']">
+                                city Code is incorrect
+                            </span>
+                        </span>
+                    </div>
+                    <div class="grey" *ngIf="errorMsg2">
+                        {{errorMsg2}}
+                    </div>
+                    <button type="submit" [disabled]="citiesForm.invalid" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

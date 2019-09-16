@@ -1,0 +1,41 @@
+.modal-body .btn-info{
+    background: #c1c1c1;
+}
+
+.modal-body .btn-danger {
+    background: #f15e5e;
+}
+.modal-body .btn{
+    color: #fff;
+    border-radius: 4px;
+    /* background: #60c7c1; */
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+    outline: none !important;
+}
+.close {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+}

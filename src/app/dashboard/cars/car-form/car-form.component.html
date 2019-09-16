@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md-3 col-sm-3 bg">
+        <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-md-9 col-sm-9">
+        <div class="container justify-content-center pt-5">
+            <form [formGroup]="carForm" (ngSubmit)="onSubmit(carForm)">
+                <!-- ADD BRAND -->
+                <!-- EDIT BRAND -->
+                <div class="form-group">
+                    <label for="">Brands</label>
+                    <select class="form-control" id="brand_id"
+                        (change)="onChangeBrand($event.target.value)"
+                        formControlName="brand_id">
+                        <option *ngFor="let brand of brands"
+                            [ngValue]="brand.name" [value]="brand.id">{{brand.name
+                            }}
+                        </option>
+                    </select>
+                    <span *ngIf="brand_id.invalid && brand_id.touched"
+                        class="grey
+                        d-block">
+                        this is field is required
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="">Models</label>
+                    <select class="form-control" id="carmodel_id" (change)="onChangeModel($event.target.value)"
+                        formControlName="carmodel_id">
+                        <option *ngFor="let model of modelist"
+                            [ngValue]="model.name" [value]="model.id">
+                            {{ model.name }}
+                        </option>
+                    </select>
+                    <span *ngIf="carmodel_id.invalid && carmodel_id.touched"
+                        class="grey
+                        d-block">
+                        this is field is required
+                    </span>
+                </div>
+                   <!-- DISPLAY YEARS IN DROP DOWN -->
+                    <div class="form-group">
+                        <label for="">Years of Model :</label>
+                        <select class="form-control" id="from_to"
+                            formControlName="from_to">
+                            <option *ngFor="let year of carYears"
+                                [value]="year"
+                                [ngValue]="year">{{ year }}
+                            </option>
+                        </select>
+                        <span *ngIf="from_to.invalid && from_to.touched"
+                            class="grey d-block">
+                            this is field is required
+                        </span>
+                    </div>
+                    <div class="form-group" *ngIf="flag ==
+                    true&&flag1=='editModel'">
+                    <label for="">Brands</label>
+                    <select class="form-control" id="brand_id"
+                        formControlName="brand_id">
+                        <option *ngFor="let brand of brands"
+                            [value]="brand.id"
+                            [ngValue]="brand.name">{{ brand.name }}
+                        </option>
+                    </select>
+                    <span *ngIf="brand_id.invalid && brand_id.touched"
+                        class="grey d-block">
+                        this is field is required
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="">vechile Number :</label>
+                    <input type="text" placeholder="vechile Number"
+                        formControlName="vin" 
+                        class="form-control">
+                    <!-- <span *ngIf="vin.invalid && vin.touched" class="grey
+                        d-block">
+                        <span *ngIf="vin.errors['required']">
+                            this is field is required
+                        </span>
+                        <span *ngIf="vin.errors&&
+                            !vin.errors['required']">
+                            vechile number is incorrect
+                        </span>
+                    </span> -->
+                </div>
+                <label for="">choose logo picture :</label>
+                <div class="form-group">
+                    <img *ngIf="flag2=='editCar'" [src]="imageUrl"
+                        style="width:100px;height:
+                        100px;" alt="">
+                    <img *ngIf="flag1=='addCar'" [src]="imageUrl"
+                        style="width:100px;height: 100px;" alt="">
+
+                    <input type="file" formControlName="vin_image"
+                        name="logophoto" #file accept="image/"
+                        (change)="onFileSelected(file.files)"
+                        maxFileSize="200000">
+                </div>
+                <button *ngIf="flag1" type="submit" class="btn btn-primary"
+                  [disabled]="carForm.invalid">Submit</button>
+                <button *ngIf="flag2" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

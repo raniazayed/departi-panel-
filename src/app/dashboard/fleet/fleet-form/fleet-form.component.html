@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+<div class="edit-img">
+        <div class="container">
+          <div class="row align-items-center justify-content-center pb-5 pt-5">
+            <div class="col-md-6 col-md-offset-3 col-xs-12 col-sm-10 edit-bg">
+              <div class="vendorForm">
+                <h2 class="p-0 m-0">fleet Form</h2>
+                <div class="line m-0"></div>
+                <form [formGroup]="fleetForm" (ngSubmit)="onSubmit(fleetForm)">
+                  <!-- EDIT NAME -->
+                  <div class="form-group">
+                    <input type="text" placeholder="Name" formControlName="name"
+                      class="form-control">
+                    <span *ngIf="name.invalid && name.touched" class="grey d-block">
+                      this is field is required
+                    </span>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input type="number" placeholder="phone" formControlName="phone"  onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" 
+                        class="form-control">
+                      <span *ngIf="phone.invalid &&phone.touched" class="grey
+                        d-block">
+                        <span *ngIf="phone.errors['required']">
+                          this is field is required
+                        </span>
+                        <span *ngIf="phone.errors['Phoneerror'] &&
+                          !phone.errors['required']">
+                          phone is incorrect
+                        </span>
+                      </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="number" placeholder="mobile" formControlName="mobile"  onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" 
+                        class="form-control">
+                      <span *ngIf="mobile.invalid &&mobile.touched" class="grey
+                        d-block">
+                        <span *ngIf="mobile.errors['required']">
+                          this is field is required
+                        </span>
+                        <span *ngIf="mobile.errors['mobileerror'] && !mobile.errors['required']">
+                          mobile is incorrect
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+      
+                  <div class="form-group">
+                    <input type="text" placeholder="Email" formControlName="Email"
+                      class="form-control" aria-label="Text input with checkbox">
+                    <span *ngIf="Email.invalid &&Email.touched" class="grey d-block">
+                      <span *ngIf="Email.errors['required']">
+                        this is field is required
+                      </span>
+                      <span *ngIf="Email.invalid&& !Email.errors['required']">
+                        email is in correct
+                      </span>
+                    </span>
+                  </div>
+      
+                  <!--  address -->
+                  <div class="form-group">
+                    <input type="text" placeholder="address" formControlName="address"
+                      class="form-control" aria-label="Text input with checkbox">
+                    <span *ngIf="address.invalid &&address.touched" class="grey
+                      d-block">
+                      <span *ngIf="address.errors['required']">
+                        this is field is required
+                      </span>
+                      <span *ngIf="address.invalid&& !address.errors['required']">
+                        address is in correct
+                      </span>
+                    </span>
+                  </div>       
+                  <!--  commercialRegisterPhoto -->
+                  <label for="">commercial Register Photo</label>
+                  <div class="form-group">
+                    <img [src]="imageUrl1" class="mr-3" style="width:100px;height:
+                      100px;" alt="">
+                    <input type="file" formControlName="commercialRegisterPhoto"
+                      name="commercialRegisterPhoto" #file accept="image/"
+                      (change)="onFileSelected($event.target.files,'1')"
+                      maxFileSize="200000">
+                  </div>
+                  <!--  taxReferncePhoto -->
+                  <label for="">tax Refernce Photo</label>
+                  <div class="form-group">
+                    <img [src]="imageUrl2" class="mr-3" style="width:100px;height:
+                      100px;" alt="">
+                    <input type="file" formControlName="taxReferncePhoto"
+                      name="taxReferncePhoto" #file accept="image/"
+                      (change)="onFileSelected($event.target.files,'2')"
+                      maxFileSize="200000">
+                  </div>
+                  <div class="mt-4">
+                    <button type="submit" class="btn btn-primary" [disabled]="fleetForm.invalid">Submit</button>
+                  </div>
+                  <!-- <button type="submit" class="btn"   [disabled]="vendorForm.invalid"></button> -->
+                </form>

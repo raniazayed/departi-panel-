@@ -1,0 +1,115 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="row">
+    <div class="col-md-3 col-sm-3 bg">
+        <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-md-9 col-sm-9">
+        <div class="container justify-content-center pt-5">
+            <form [formGroup]="partsForm" (ngSubmit)="onSubmit(partsForm)">
+                <!-- EDIT PART and edit -->
+                <div class="form-group" *ngIf="flag=='addPart'">
+                    <label for="">Brands</label>
+                    <select class="form-control" id="brand_id" (change)="onChangeBrand($event.target.value)"
+                        formControlName="brand_id">
+                        <option *ngFor="let brand of brands" [ngValue]="brand.id" [value]="brand.id">{{brand.name }}
+                        </option>
+                    </select>
+                    <span *ngIf="brand_id.invalid && brand_id.touched" class="grey
+                        d-block">
+                        this is field is required
+                    </span>
+                </div>
+                <div class="form-group" *ngIf="flag=='editPart'">
+                        <label for="">Brands</label>
+                        <select class="form-control" id="brand_id" (change)="onChangeBrand($event.target.value)"
+                            formControlName="brand_id">
+                            <option *ngFor="let brand of brands"  [ngValue]="brand.name" [value]="brand.id">{{brand.name }}
+                            </option>
+                        </select>
+                        <span *ngIf="brand_id.invalid && brand_id.touched" class="grey
+                            d-block">
+                            this is field is required
+                        </span>
+                    </div>
+                <div class="form-group" *ngIf="flag=='addPart'">
+                    <label for="">Models</label>
+                    <select class="form-control" id="carmodel_id" formControlName="carmodel_id">
+                        <option *ngFor="let model of modelist" [ngValue]="model.name" [value]="model.id">
+                            {{ model.name }}
+                        </option>
+                    </select>
+                    <span *ngIf="carmodel_id.invalid && carmodel_id.touched" class="grey
+                        d-block">
+                        this is field is required
+                    </span>
+                </div>
+                <div class="form-group" *ngIf="flag=='editPart'">
+                        <label for="">Models</label>
+                        <select class="form-control" id="carmodel_id" formControlName="carmodel_id">
+                            <option *ngFor="let model of modelist" [selected]="modelName" [ngValue]="model.name" [value]="model.id">
+                                {{ model.name }}
+                            </option>
+                        </select>
+                        <span *ngIf="carmodel_id.invalid && carmodel_id.touched" class="grey
+                            d-block">
+                            this is field is required
+                        </span>
+                    </div>
+                <div class="form-group">
+                    <label for="">Part Name :</label>
+                    <input type="text" placeholder="part name" formControlName="name" maxlength="255"
+                        class="form-control">
+                    <span *ngIf="name.invalid && name.touched" class="grey d-block">
+                        <span class="red" *ngIf="name.errors">
+                            name isn't correct!
+                        </span>
+                        this is field is required
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="">Part No :</label>
+                    <input type="text" placeholder="part no" maxlength="255" formControlName="part_no"
+                        class="form-control">
+                    <span *ngIf="part_no.invalid && part_no.touched" class="grey d-block">
+                        this is field is required
+                        <span class="red" *ngIf="part_no.errors">
+                            part_no isn't correct!
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="">Part Weight :</label>
+                    <input type="number" placeholder="weight" min="0" onkeydown="javascript: return event.keyCode === 8 ||
+                        event.keyCode === 46 ? true : !isNaN(Number(event.key))" formControlName="weight"
+                        class="form-control">
+                    <div class="red" *ngIf="weight.invalid &&
+                        weight.touched">
+                        <div class="red" *ngIf="weight.errors['numbererror']">
+                            weight isn't correct!
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="">Part Width :</label>
+                    <input type="number" placeholder="width" formControlName="width" onkeydown="javascript: return event.keyCode === 8 ||
+                        event.keyCode === 46 ? true : !isNaN(Number(event.key))" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Part Depth :</label>
+                    <input type="number" placeholder="depth" formControlName="depth" onkeydown="javascript: return event.keyCode === 8 ||
+                        event.keyCode === 46 ? true : !isNaN(Number(event.key))" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Part Height :</label>
+                    <input type="number" placeholder="height" formControlName="height" onkeydown="javascript: return event.keyCode === 8 ||
+                        event.keyCode === 46 ? true : !isNaN(Number(event.key))" class="form-control">
+                </div>
+                <button type="submit" [disabled]="partsForm.invalid" class="btn
+                    btn-primary"> submit</button>
+            </form>
+        </div>
+    </div>
+</div>

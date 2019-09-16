@@ -1,0 +1,170 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="row">
+    <div class="col-md-3 col-sm-12 bg">
+        <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <div class="container justify-content-center pt-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>part No</th>
+                        <th>part Name</th>
+                        <th>part width</th>
+                        <th>part weight</th>
+                        <th>brand height</th>
+                        <th>brand depth</th>
+                        <th class="text-center"><button class="btn btn-success" [routerLink]="['/parts',flag1]"> Add part</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let part of parts" class="mb-5">
+                        <td>
+                            {{part.part_no}}
+                        </td>
+                        <td>
+                            {{part.name}}
+                        </td>
+                        <td>
+                            {{part.width}}
+                        </td>
+                        <td>
+                            {{part.weight}}
+                        </td>
+                        <td>
+                            {{part.height}}
+                        </td>
+                        <td>
+                            {{part.depth}}
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                <button *ngIf="editable" type="submit" class="btn
+                                        btn-success">
+                                    add
+                                </button>
+                                <button [routerLink]="['/parts',flag2,part.id]" class="btn btn-danger mb-2"
+                                    style="margin-left: 20px;">
+                                    Edit</button>
+                                <button class="btn btn-danger mb-2" (click)="deletePartlList(part.id)"
+                                    style="margin-left: 20px;">
+                                    Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- EDIT IN SAME PLACE -->
+<!-- <td>
+        <div class="form-group">
+            <input *ngIf="editable" type="number"
+                placeholder="partNo" [(ngModel)]="part.partNo"
+                id="newAttribute" name="newAttribute"
+                #newAttribute="ngModel" class="form-control"
+                [ngModelOptions]="{standalone: true}" required
+                minlength="3">
+            <p *ngIf="!editable">{{part.partNo}}</p>
+            <span *ngIf="newAttribute.invalid &&
+                newAttribute.touched" class="grey
+                d-block">
+                this is field is required
+            </span>
+        </div>
+    </td>
+    <td>
+        <div class="form-group">
+            <input *ngIf="editable" type="text"
+                placeholder="partName"
+                [(ngModel)]="part.partName"
+                id="newAttribute" name="newAttribute"
+                #newAttribute="ngModel" class="form-control"
+                [ngModelOptions]="{standalone: true}" required
+                minlength="3">
+            <p *ngIf="!editable">{{part.partName}}</p>
+            <span *ngIf="newAttribute.invalid &&
+                newAttribute.touched" class="grey
+                d-block">
+                this field is required
+            </span>
+        </div>
+    </td>
+
+    <td>
+        <div class="form-group">
+            <input *ngIf="editable" type="number"
+                placeholder="partDimension"
+                [(ngModel)]="part.partDimension"
+                id="newAttribute" name="newAttribute"
+                #newAttribute="ngModel" class="form-control"
+                [ngModelOptions]="{standalone: true}" required
+                minlength="3">
+            <p *ngIf="!editable">{{part.partDimension}}</p>
+            <span *ngIf="newAttribute.invalid &&
+                newAttribute.touched" class="grey
+                d-block">
+                this field is required
+            </span>
+        </div>
+    </td>
+    <td>
+        <div class="form-group">
+            <input type="number" *ngIf="editable" type="number"
+                placeholder="partWeight"
+                [(ngModel)]="part.partWeight" ngModel
+                id="partWeight" name="partWeight"
+                #partWeight="ngModel" class="form-control"
+                [ngModelOptions]="{standalone: true}" required
+                minlength="3">
+            <p *ngIf="!editable">{{part.partWeight}}</p>
+             <span *ngIf="newAttribute.invalid &&
+                newAttribute.touched" class="grey
+                d-block">
+                this field is required
+            </span> -->
+<!-- </div>
+    </td>
+    <td>
+
+        <div class="form-group">
+            <select *ngIf="editable" class="form-control"
+                id="brandName"
+                placeholder="enter brandName"
+                #brandName="ngModel" name="brandName"
+                [(ngModel)]="part.brandName"
+                (change)="onChangeBrand($event.target.value)">
+                 <option value="Select Area...">Select Area...</option> -->
+<!-- <option *ngFor="let brand of brands"
+                    [value]="brand.id">{{brand.name
+                    }}</option>
+            </select>
+            <span *ngIf="brandName.invalid && brandName.touched"
+                class="grey d-block">
+                this field is required
+            </span> 
+            <p *ngIf="!editable">{{part.brandName}}</p>
+
+        </div>
+    </td>
+    <td>
+        <div class="form-group">
+            <select *ngIf="editable" class="form-control"
+                id="modelName" #modelName="ngModel"
+                name="modelName" [(ngModel)]="part.modelName"
+                placeholder="enter modelName">
+                <option *ngFor="let model of models"
+                    [value]="model.id">{{model.name}}</option>
+            </select>
+             <span *ngIf="modelName.invalid && modelName.touched"
+                class="grey d-block">
+                this field is required
+            </span> -->
+<!-- <p *ngIf="!editable">{{part.modelName}}</p>
+        </div>
+    </td>   -->

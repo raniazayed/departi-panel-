@@ -1,0 +1,40 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="row">
+    <div class="col-md-3 col-sm-12 bg">
+        <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <div class="container justify-content-center pt-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>unit Name</th>
+
+                        <th class="text-center"><button class="btn btn-success" [routerLink]="['/units',flag1]"> Add
+                                unit</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let unit of units" class="mb-5">
+
+                        <td>
+                            {{unit.name}}
+                        </td>
+
+                        <td>
+                            <div class="text-center">
+                                <button [routerLink]="['/units',flag2,unit.id]" class="btn btn-danger mb-2"
+                                    style="margin-left: 20px;">
+                                    Edit</button>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

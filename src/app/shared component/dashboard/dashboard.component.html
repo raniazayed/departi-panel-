@@ -1,0 +1,39 @@
+<!-- NAVBAR -->
+<section id="sidemenu">
+
+    <nav>
+        <a class="" routerLink="/brands" class="">
+            <div class="justify-content-center text-center">
+                <img src="assets/images/elrizk.png" class="img-fluid" width=85px alt="brand logo">
+            </div>
+        </a>
+        <a routerLink="/brands" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="mt-5 hover"><i class="fas fa-home"></i> Brands </a>
+        <a routerLink="/models"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Models</a>
+        <a routerLink="/cities"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Cities</a>
+        <a routerLink="/areas"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Areas</a>
+        <a routerLink="/parts"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="far fa-sticky-note"></i>Parts</a>
+        <a routerLink="/units"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>units</a>
+        <a routerLink="/cars"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Cars</a>
+        <a routerLink="/fleet"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Fleet</a>
+        <a routerLink="/vendors"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Vendors</a>
+        <a routerLink="/location"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="hover"><i class="fas fa-cog"></i>Location</a>
+
+        <a (click)="logout()" class="hover"><i class="fas fa-sign-out-alt"></i>logout</a>
+    </nav>
+</section>
+<!-- HEADER -->
+<!-- <header>
+    <h1>Rania Zayed</h1>
+    <div class="search-area inline-block">
+        <i class="fas fa-search darkgrey"></i>
+        <input type="text">
+    </div>
+    <div class="user-field inline-block">
+        <a href="#" class="add">+ Add</a>
+        <a href="#" class="notification"><i class="far fa-bell"></i> <span class="circle inline-block">3</span></a>
+        <a href="#">
+            <div class="user-img"></div>
+            <i class="fas fa-sort-down down"></i>
+        </a>
+    </div>
+</header> -->

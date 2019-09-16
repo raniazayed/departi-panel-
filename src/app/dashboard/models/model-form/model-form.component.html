@@ -1,0 +1,220 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="w-99">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">
+                <form [formGroup]="modelsForm"
+                    (ngSubmit)="onSubmit(modelsForm)">
+                    <!-- ADD MODEL -->
+                    <div class="form-group" *ngIf="flag ==
+                        true&&flag1=='addModel'">
+                        <label for="">Brands</label>
+                        <select class="form-control" id="brand_id"
+                            formControlName="brand_id">
+                            <option value="">select brand...</option>
+                            <option *ngFor="let brand of brands"
+                                [value]="brand.id" [ngValue]="brand.id">{{brand.name
+                                }}
+                            </option>
+                        </select>
+                        <span *ngIf="brand_id.invalid && brand_id.touched"
+                            class="grey d-block">
+                            this is field is required
+                        </span>
+                    </div>
+                    <!-- EDIT model -->
+                    <div class="form-group" *ngIf="flag ==
+                        true&&flag1=='editModel'">
+                        <label for="">Brands</label>
+                        <select class="form-control" id="brand_id"
+                            formControlName="brand_id">
+                            <option *ngFor="let brand of brands"
+                                [value]="brand.id"
+                                [ngValue]="brand.name">{{ brand.name }}
+                            </option>
+                        </select>
+                        <span *ngIf="brand_id.invalid && brand_id.touched"
+                            class="grey d-block">
+                            this is field is required
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Model Name :</label>
+                        <input type="text" placeholder="brand Model"
+                            formControlName="name" minlength="3"
+                            class="form-control">
+                        <span *ngIf="name.invalid && name.touched" class="grey
+                            d-block">
+                            <span *ngIf="name.errors['required']">
+                                this is field is required
+                            </span>
+                            <span *ngIf="name.errors&&
+                                !name.errors['required']">
+                                model name is incorrect
+                            </span>
+                        </span>
+                    </div>
+                
+                    <!-- <div class="form-row" >
+                        <div class="form-group">
+                            <label for="">Start Date :</label>
+                            <input type="number" placeholder="startDate"  [class]="firstRange"
+                                formControlName="from" min="0" minlength="4"
+                                maxlength="4"
+                                onkeydown="javascript: return event.keyCode ===
+                                8 ||
+                                event.keyCode === 46 ? true :
+                                !isNaN(Number(event.key))"
+                                ng-model="from" class="form-control">
+                            <span *ngIf="from.invalid && from.touched"
+                                class="grey
+                                d-block">
+                                <span *ngIf="from.errors['required']">
+                                    this is field is required
+                                </span>
+                                <span *ngIf="from.errors['dateerror'] &&
+                                    !from.errors['required']">
+                                    start Date is incorrect
+                                </span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">End Date :</label>
+                            <input type="number" placeholder="endDate"
+                                formControlName="to" min=0 minlength="4"
+                                maxlength="4"   [class]="firstRange"
+                                onkeydown="javascript: return event.keyCode ===
+                                8 ||
+                                event.keyCode === 46 ? true :
+                                !isNaN(Number(event.key))"
+                                ng-model="to" (change)='checkErr(from,to)'
+                                class="form-control">
+                            <span class="grey">{{errMessage}}</span>
+                            <span *ngIf="to.touched&&to.invalid" class="grey
+                                d-block">
+                                <span *ngIf="to.errors['dateerror']">
+                                    end Date is incorrect
+                                </span>
+                            </span>
+                        </div>
+                        <button (click)="addRange(firstRange)" [disabled]="to.invalid&&from.invalid" [class]="firstRange" class="btn btn-primary"  >Add</button>
+                        <button (click)="deleteRange(i=0)" class="btn btn-primary">Delete</button>
+                    </div> -->
+                    <div class="d-block text-right">
+                            <button (click)="addRange(i)" class="btn btn-primary d-inline-block" >
+                                <i class="fa fa-plus-circle"></i>   </button>
+                        </div>
+                        <div *ngIf="flag1=='addModel'">
+                            <div class="row"  *ngFor="let year of yearsDesign;let i = index">
+                                <div class="form-group" >
+                                    <label for="">Start Date :</label>
+                                    <input type="number" placeholder="startDate" [class]="i"
+                                        formControlName="from" min="0" minlength="4" 
+                                        maxlength="4"
+                                        onkeydown="javascript: return event.keyCode ===
+                                        8 ||
+                                        event.keyCode === 46 ? true :
+                                        !isNaN(Number(event.key))"
+                                        [value]='year.from' class="form-control">
+                                    <span *ngIf="from.invalid && from.touched"
+                                        class="grey
+                                        d-block">
+                                        <span *ngIf="from.errors['required']">
+                                            this is field is required
+                                        </span>
+                                        <span *ngIf="from.errors['dateerror'] &&
+                                            !from.errors['required']">
+                                            start Date is incorrect
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="form-group" >
+                                    <label for="">End Date :</label>
+                                    <input type="number" placeholder="endDate" [class]="i" 
+                                        formControlName="to" min=0 minlength="4" 
+                                        maxlength="4"
+                                        onkeydown="javascript: return event.keyCode ===
+                                        8 ||
+                                        event.keyCode === 46 ? true :
+                                        !isNaN(Number(event.key))"
+                                        [value]='year.to' (change)='checkErr(from,to)'
+                                        class="form-control">
+                                    <span class="grey">{{errMessage}}</span>
+                                    <span *ngIf="to.touched&&to.invalid" class="grey
+                                        d-block">
+                                        <span *ngIf="to.errors['dateerror']">
+                                            end Date is incorrect
+                                        </span>
+                                    </span>
+                                </div>
+                                <button *ngIf="flag1=='addModel'" (click)="submitRange(i,'add')" [disabled]="from.invalid&&to.invalid" [class]="i"  style="background: #007bff;color:#fff;padding: 0.375rem 0.75rem;border:none" >add</button>
+                                <!-- <button *ngIf="flag1=='editModel' && editBtn==false" (click)="submitRange(i)" [disabled]="from.invalid&&to.invalid" [class]="i"  style="background: #007bff;color:#fff;padding: 0.375rem 0.75rem;border:none" >add</button> -->
+                                <!-- <button *ngIf="flag1=='editModel' " (click)="editRange(i)" class="btn btn-danger mb-2">Edit</button>      -->
+                                <button (click)="deleteRange(i,'add')" class="btn btn-danger mb-2">Delete</button>     
+                            </div>
+                        </div>
+                        <div *ngIf="flag1=='editModel'" >
+                            <div class="row" *ngFor="let year of yearsDesign;let i = index">
+                                <div class="form-group" >
+                                    <label for="">Start Date :</label>
+                                    <input type="number" placeholder="startDate" [class]="i"
+                                        formControlName="from" min="0" disabled minlength="4" 
+                                        maxlength="4"
+                                        onkeydown="javascript: return event.keyCode ===
+                                        8 ||
+                                        event.keyCode === 46 ? true :
+                                        !isNaN(Number(event.key))"
+                                        [value]='year.from' class="form-control">
+                                    <span *ngIf="from.invalid && from.touched"
+                                        class="grey
+                                        d-block">
+                                        <span *ngIf="from.errors['required']">
+                                            this is field is required
+                                        </span>
+                                        <span *ngIf="from.errors['dateerror'] &&
+                                            !from.errors['required']">
+                                            start Date is incorrect
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="form-group" >
+                                    <label for="">End Date :</label>
+                                    <input type="number" placeholder="endDate" [class]="i" 
+                                        formControlName="to" min=0 minlength="4" 
+                                        maxlength="4"
+                                        onkeydown="javascript: return event.keyCode ===
+                                        8 ||
+                                        event.keyCode === 46 ? true :
+                                        !isNaN(Number(event.key))"
+                                        [value]='year.to' (change)='checkErr(from,to)'
+                                        class="form-control">
+                                    <span class="grey">{{errMessage}}</span>
+                                    <span *ngIf="to.touched&&to.invalid" class="grey
+                                        d-block">
+                                        <span *ngIf="to.errors['dateerror']">
+                                            end Date is incorrect
+                                        </span>
+                                    </span>
+                                </div>
+        
+                                <!-- <button *ngIf="flag1=='addModel'" (click)="submitRange(i,'add')" [disabled]="from.invalid&&to.invalid" [class]="i"  style="background: #007bff;color:#fff;padding: 0.375rem 0.75rem;border:none" >add</button> -->
+
+                                <button *ngIf="flag1=='editModel' && editBtn==false" (click)="submitRange(i,'edit')" [disabled]="from.invalid&&to.invalid" [class]="i"  style="background: #007bff;color:#fff;padding: 0.375rem 0.75rem;border:none" >add</button>
+
+                                <button *ngIf="flag1=='editModel'&& editBtn==true " (click)="editRange(i)" class="btn btn-danger mb-2">Edit</button>     
+                                <button (click)="deleteRange(i)" class="btn btn-danger mb-2">Delete</button>     
+                            </div>
+
+                        </div>
+                    <button *ngIf="flag1=='addModel'" type="submit" class="btn
+                        btn-primary" > submit</button>
+                    <button *ngIf="flag1=='editModel'" type="submit" class="btn
+                        btn-primary"> submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

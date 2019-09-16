@@ -1,0 +1,51 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="w-99">
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">
+            <form [formGroup]="addBrandForm" (ngSubmit)="onSubmit(addBrandForm)">
+                <!-- ADD BRAND -->
+                <div class="form-group">
+                    <label for="">Brand Name :</label>
+                    <input type="text" placeholder="Band Name" formControlName="name" minlength="3" maxlength="255"
+                        class="form-control">
+                    <div class="grey" *ngIf="errorMsg1">
+                        {{errorMsg1}}
+                    </div>
+                    <span *ngIf="name.invalid && name.touched" class="grey d-block">
+                        <span *ngIf="name.errors['required']">
+                            this is field is required
+                        </span>
+                        <span *ngIf="name.errors &&
+                                    !name.errors['required']">
+                            model name is incorrect
+                        </span>
+                    </span>
+                </div>
+                <label for="">choose logo picture :</label>
+                <div class="form-group">
+                    <img *ngIf="flag2=='editBrand'" [src]="imageUrl" style="width:100px;height:
+                                100px;" alt="">
+                    <img *ngIf="flag1=='addBrand'" [src]="imageUrl" style="width:100px;height: 100px;" alt="">
+    
+                    <input type="file" formControlName="logo" name="logophoto" #file accept="image/"
+                        (change)="onFileSelected(file.files)" maxFileSize="200000">
+                    <span *ngIf="logo.invalid && logo.touched" class="grey d-block">
+                        this is field is required
+                    </span>
+                </div>
+                <!-- <div class="grey" *ngIf="errorMsg2">
+                    {{errorMsg2}}
+                </div> -->
+                <button *ngIf="flag1" type="submit" class="btn btn-primary" [disabled]="addBrandForm.invalid">Submit</button>
+                <button *ngIf="flag2" type="submit" class="btn btn-primary">Submit</button>
+    
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

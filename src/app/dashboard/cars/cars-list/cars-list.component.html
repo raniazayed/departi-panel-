@@ -1,0 +1,48 @@
+<div class="w-99">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Brand Name</th>
+                            <th>Model Name</th>
+                            <th>Model Year</th>
+                            <th>vechile No</th>
+                            <th>vechile Iamge</th>
+                            <!-- ADD Cars -->
+                            <th class="text-center"> <button class="btn btn-success"
+                                    [routerLink]="['/cars',flag1]">
+                                    ADD CAR</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="mb-5 text-center" *ngFor="let car of cars">
+                            <td>{{car.brand_name}}</td>
+                            <td>{{car.model_name}}</td>
+                            <td>{{car.year}}</td>
+                            <td>{{car.vin}}</td>
+                            <!-- <td><img src="http://192.168.1.11:3000/storage/brands/{{car.vin_image}}" class="img-fluid"
+                                style="width: 100px; height:100px"> </td> -->
+                            <td><img [src]="car.vin_image" class="img-fluid"
+                                    style="width: 100px; height:100px"> </td>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-danger mb-2"
+                                        [routerLink]="['/cars',flag2,car.id]"
+                                        style="margin-left: 20px;">
+                                        Edit</button>
+                                    <!-- <button class="btn btn-danger mb-2"
+                                        (click)="deleteCar(car.id)"
+                                        style="margin-left: 20px;">
+                                        Delete</button> -->
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>

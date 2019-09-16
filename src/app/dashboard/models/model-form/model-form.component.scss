@@ -1,0 +1,10 @@
+
+@import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/functions';
+.grey{color: red}
+.bg{
+    @extend %bg ;
+}
+.w-99{
+    width: 99%
+}

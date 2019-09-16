@@ -1,0 +1,15 @@
+img{
+    width:85px
+}
+.bg-nav{
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(57,73,76,.35);
+}
+.nav-color{
+    color: black;
+    /* @extend %regularsegoe; */
+}
+.main-color{
+    color: red !important;
+    /* color:$mainColor !important; */
+}

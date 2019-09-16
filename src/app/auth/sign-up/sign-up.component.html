@@ -1,0 +1,191 @@
+<div class="edit-img">
+  <div class="container">
+    <div class="row align-items-center justify-content-center pb-5 pt-5">
+      <div class="col-md-8 col-md-offset-3 col-xs-12 col-sm-10 edit-bg">
+        <div class="vendorForm">
+          <h2 class="p-0 m-0">{{flag}} form</h2>
+          <div class="line m-0"></div>
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)">
+            <!-- EDIT NAME -->
+            <div class="form-group">
+              <label for="Enter your Name">Enter your Name <span class="grey">*</span></label>
+              <input type="text" placeholder="Full Name" formControlName="name" minlength="3" maxlength="50"
+                class="form-control">
+              <span *ngIf="name.invalid && name.touched" class="grey d-block">
+                <span *ngIf="name.errors['required']">
+                  this is field is required
+                </span>
+                <span *ngIf="name.hasError('maxlength')">
+                  name shoud be less than 50chars
+                </span>
+                <span *ngIf="name.hasError('minlength')">
+                  name shoud be more than 3 chars
+                </span>
+                <span *ngIf="name.errors['nameerror'] &&
+                            !name.errors['required']">
+                  name is incorrect
+                </span>
+              </span>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="Enter your Mobile Number">Enter your Mobile Number <span class="grey">*</span></label>
+                <input type="number" placeholder="mobile" formControlName="mobile"
+                  onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+                  class="form-control">
+                <span *ngIf="mobile.invalid &&mobile.touched" class="grey
+                  d-block">
+                  <span *ngIf="mobile.errors['required']">
+                    this is field is required
+                  </span>
+                  <span *ngIf="mobile.errors['mobileerror'] &&
+                    !mobile.errors['required']">
+                    mobile is incorrect
+                  </span>
+                </span>
+              </div>
+              <!-- PHONE -->
+              <div class="form-group col-md-6">
+                <label for="Enter your Home Land">Enter your Home Land</label>
+                <input type="number" placeholder="phone" formControlName="phone"
+                  onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+                  class="form-control">
+                <span *ngIf="phone.invalid &&phone.touched" class="grey d-block">
+                  <span *ngIf="phone.errors['required']">
+                    this field is required
+                  </span>
+                  <span *ngIf=" phone.errors['phoneerror']">
+                    phone is incorrect
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="Enter your Email">Enter your Email <span class="grey">*</span></label>
+              <input type="text" placeholder="Email" formControlName="email" class="form-control"
+                aria-label="Text input with checkbox">
+              <span *ngIf="email.invalid &&email.touched" class="grey d-block">
+                <span *ngIf="email.errors['required']">
+                  this is field is required
+                </span>
+                <span *ngIf="email.invalid&& !email.errors['required']">
+                  email is in correct
+                </span>
+              </span>
+            </div>
+            <!-- Password -->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="Enter your Password">Enter your Password <span class="grey">*</span></label>
+                <input type="text" placeholder="Password" minlength="6" maxlength="12" formControlName="password"
+                  class="form-control" aria-label="Text input with checkbox">
+                <span *ngIf="password.invalid&&password.touched" class="grey d-block">
+                  <span *ngIf="password.hasError('minlength')">
+                    password shoud be more than 6 chars
+                  </span>
+                  <span *ngIf="password.hasError('maxlength')">
+                    password shoud be less than 12 chars
+                  </span>
+                  <span *ngIf="password.touched && password.errors['required']">
+                    this is field is required
+                  </span>
+                </span>
+              </div>
+              <!-- CONFIRM PASSWORD -->
+              <div class="form-group col-md-6">
+                <label for="Confirm Password">Confirm Password <span class="grey">*</span></label>
+                <input type="text" placeholder="Confirm Password" formControlName="c_password" class="form-control"
+                  aria-label="Text input with checkbox">
+                <span *ngIf="c_password.invalid && c_password.touched" class="grey d-block">
+                  <span *ngIf="c_password.errors['required']">
+                    this is field is required
+                    <span *ngIf="password.value">
+                      <!-- <span *ngIf="c_password.errors.mismatch">Passwords must match</span>
+                    </span> -->
+                      <span *ngIf="c_password.value!=null && c_password.value!=password.value">
+                        Confirm Password doesn't match password
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <!--  city -->
+            <div class="form-group">
+              <label for="Enter Your City">Enter Your City <span class="grey">*</span></label>
+              <select class="form-control" id="city_id" placeholder="enter cityName" formControlName="city_id">
+                <option value="Select City...">Select City...</option>
+                <option *ngFor="let city of cities" [ngValue]="city.name" [value]="city.id">{{city.name
+                }}</option>
+              </select>
+              <span *ngIf="city_id.invalid && city_id.touched" class="grey d-block">
+                this field is required
+              </span>
+            </div>
+            <!--  BraNDS -->
+            <div *ngIf="flag=='vendor'|| roleName=='vendor'">
+              <label>Select your Brands :<span class="grey">*</span> </label>
+              <div class="form-group">
+                <mat-form-field>
+                  <mat-label>brands</mat-label>
+                  <mat-select formControlName="Brands" multiple>
+                    <mat-option *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span *ngIf="Brands.invalid &&Brands.touched" class="grey
+                  d-block">
+                  this is field is required
+                </span>
+              </div>
+            </div>
+            <!-- PARTS TYPE -->
+            <div class="form-row" *ngIf="flag=='vendor'|| roleName=='vendor'">
+              <div class="form-group">
+                <label> parts types</label>
+                <div class="radio">
+                  <label><input type="radio" formControlName="partstype" value="original">original</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" formControlName="partstype" value="commercial">commercial</label>
+                </div>
+                <span *ngIf="partstype.invalid &&partstype.touched" class="d-block grey">
+                  this is field is required
+                </span>
+              </div>
+            </div>
+            <!--  commercialRegisterPhoto -->
+            <div *ngIf="flag!='user'&& roleName!='user'">
+              <label for="">choose commercial Register Photo : <span class="grey">*</span></label>
+              <div class="form-group">
+                <img [src]="imageUrl1" class="mr-3" style="width:100px;height:
+                  100px;" alt="">
+                <!-- <button class="btn">Upload a file</button> -->
+                <input type="file" formControlName="commercialRegisterPhoto" name="commercialRegisterPhoto" #file
+                  accept="image/" (change)="onFileSelected($event.target.files,'1')" maxFileSize="200000">
+              </div>
+            </div>
+            <!--  taxReferncePhoto -->
+            <div *ngIf="flag!='user'&& roleName!='user'">
+              <label for="">choose taxRefernce Photo : <span class="grey">*</span> </label>
+              <div class="form-group">
+                <img [src]="imageUrl2" class="mr-3" style="width:100px;height:
+                  100px;" alt="">
+                <input type="file" formControlName="taxReferncePhoto" name="taxReferncePhoto" #file accept="image/"
+                  (change)="onFileSelected($event.target.files,'2')" maxFileSize="200000">
+              </div>
+            </div>
+            <div class="mt-4">
+              <!-- USER REGISTER -->
+              <button *ngIf="flag=='user'|| roleName=='user'"
+                [disabled]="name.invalid||email.invalid||mobile.invalid||password.invalid || phone.invalid"
+                type="submit" class="btn btn-primary">Submit</button>
+              <!-- flEET REGISTER -->
+              <button *ngIf="flag=='fleet' || roleName=='fleet'"
+                [disabled]="name.invalid||email.invalid||mobile.invalid||password.invalid || phone.invalid"
+                type="submit" class="btn btn-primary">Submit</button>
+              <!-- VENDOR REGISTER -->
+              <button *ngIf="flag=='vendor'||roleName=='vendor'" [disabled]='signupForm.invalid' type="submit"
+                class="btn btn-primary">Submit</button>
+            </div>
+          </form>

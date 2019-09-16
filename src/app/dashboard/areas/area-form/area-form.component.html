@@ -1,0 +1,42 @@
+<div class="w-99">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">
+                <form [formGroup]="areasForm" (ngSubmit)="onSubmit(areasForm)">
+                    <!-- ADD area -->
+                    <div class="form-group" *ngIf="!flag">
+                        <label for="">select city :</label>
+                        <select class="form-control" id="city_id" placeholder="enter cityName" formControlName="city_id">
+                            <option value="">select city ...</option>
+                            <option *ngFor="let city of cities"  [ngValue]="city.id" [value]="city.id">{{city.name}}</option>
+                        </select>
+                        <span *ngIf="city_id.invalid && city_id.touched" class="grey d-block">
+                            this field is required
+                        </span>
+                    </div>
+    
+                    <div class="form-group">
+                            <label for="">Area Name :</label>
+                        <input type="text" placeholder="areaName" minlength="3" maxlength="255" formControlName="name"
+                            class="form-control">
+                        <span *ngIf="name.invalid && name.touched" class="grey
+                            d-block">
+                            <span *ngIf="name.errors['required']">
+                                this field is required
+                            </span>
+                            <span *ngIf="name.errors&&
+                                !name.errors['required']">
+                                area name is incorrect
+                            </span>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="areasForm.invalid">Submit</button>
+                </form>
+    
+    
+            </div>
+    </div>
+</div>

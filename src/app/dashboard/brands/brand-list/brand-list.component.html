@@ -1,0 +1,40 @@
+<div class="w-99">
+  <div class="row">
+    <div class="col-md-3 col-sm-3 bg">
+      <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-md-9 col-sm-9">
+      <div class="container justify-content-center pt-5" *ngIf="brands">
+  
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>image</th>
+              <th class="text-center">
+                <!-- ADD Brand -->
+                <button class="btn btn-success" [routerLink]="['/brands',flag1]"> Add Brand</button></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let brand of brands" class="mb-5">
+              <td>{{brand.name}}</td>
+              <td><img src="http://192.168.1.11:3000/storage/brands/{{brand.logo}}" class="img-fluid"
+                  style="width: 100px; height:100px"> </td>
+                  <td>
+                    <div class="text-center">
+                      <button class="btn btn-danger mb-2" [routerLink]="['/brands',flag2,brand.id]" style="margin-left: 20px;">
+                        Edit</button>
+                      <!-- <button class="btn btn-danger mb-2" (click)="deleteBrand(brand.id)" style="margin-left: 20px;">
+                        Delete</button> -->
+                      <button class="btn btn-danger mb-2" [routerLink]="['/brand',brand.id,'models']" style="margin-left: 20px;">
+                        show Models</button>
+                    </div>
+                  </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

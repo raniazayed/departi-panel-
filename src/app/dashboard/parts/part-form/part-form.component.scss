@@ -1,0 +1,8 @@
+@import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/functions';
+.grey{
+    color: red
+}
+.bg{
+    @extend %bg ;
+}

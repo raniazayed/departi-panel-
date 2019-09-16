@@ -1,0 +1,107 @@
+<!-- <div class="container">
+    <div class="col-md-6 col-sm-12 text-right">
+        <button class="btn btn-success" [routerLink]="['/addCity',flag1]"> Add
+            city</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>cityName</th>
+                <th>cityCode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let city of cities" class="mb-5">
+                <td><a [routerLink]="['/cityArea',city.id]"> {{city.cityName}}</a></td>
+                <td>{{city.cityCode}}</td>
+                <td>
+                    <div class="">
+                        <button class="btn btn-danger"
+                            [routerLink]="['/editCity',flag2,city.id]"
+                            style="margin-left: 20px;">
+                            Edit</button>
+                        <button class="btn btn-danger"
+                            (click)="deletecitieslList(city.id)"
+                            style="margin-left: 20px;">
+                            Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<div class="w-99">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">   
+                    <table *ngIf="cities" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>cityName</th>
+                                <th>cityCode</th>
+                                <th class="text-center"><button *ngIf="cities" class="btn btn-success" [routerLink]="['/cities',flag1]"> Add
+                                city</button></th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let city of cities" class="mb-5">
+                                <td> <a [routerLink]="['/city',city.id,'areas']">{{city.name}}</a> </td>
+                                <td>
+                                    <p>0{{city.code}}</p>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <button class="btn btn-danger"
+                                            [routerLink]="['/cities',city.id,flag2]"
+                                            style="margin-left: 20px;">
+                                            Edit</button>
+                                        <!-- <button class="btn btn-danger"
+                                            (click)="deletecitieslList(city.id)"
+                                            style="margin-left: 20px;">
+                                            Delete</button> -->
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td>
+                                    <input class="form-control" type="text"
+                                        id="cityName" placeholder="enter city name"
+                                        ngModel
+                                        name="cityName" #name="ngModel" required />
+                                        <div class="red" *ngIf="name.invalid && name.touched">
+                                                city Name is required!
+                                        </div>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number"
+                                        id="cityCode" placeholder="enter city code"
+                                        ngModel
+                                        name="cityCode" #cityCode="ngModel" required  minlength="2" maxlength="3"/>
+                                        <div class="red" *ngIf="cityCode.invalid && cityCode.touched">
+                                            <div *ngIf = "cityCode.errors['required']">
+                                                city code is required!
+                                                <div class="red" *ngIf="!cityCode.errors['required'] && cityCode.errors">
+                                                        city code isn't correct!
+                                                </div>
+                                            </div>
+                                        </div>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <button type="submit" [disabled]="f.invalid"
+                                            class="btn btn-success">
+                                            add
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr> -->
+                       
+                        </tbody>
+                    </table>        
+            </div>
+        </div>
+    </div>
+</div>

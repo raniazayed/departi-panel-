@@ -1,0 +1,50 @@
+<!-- LOGIN FORM -->
+<div class="login-bg">
+
+    <div class="container ">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-6 col-md-offset-3 col-xs-12 col-sm-10 col-md-8">
+          <div class="loginform">
+            <div class="container  mb-5">
+              <div class="row">
+                <div class="col-xs-12 col-sm-10 col-md-8">
+                    <h3 class="m-0 p-0">Log in </h3>
+                    <div class="line"></div>
+                    <div class="alert alert-danger" role="alert" *ngIf="access" style="padding: 0.5rem 1.25rem">
+                        <strong>Warning!</strong> Please check your email or password .
+                     </div>
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+                      <div class="form-group">
+                            <label for="Email">Email</label>
+                          <input type="text" placeholder="Email" formControlName="email" class="form-control"
+                          aria-label="Text input with checkbox">
+                      <span *ngIf="!email.valid &&email.touched" class="grey">
+                        <span *ngIf="email.errors['required']">
+                          this is field is required
+                        </span>
+                        <span *ngIf="email.errors['validationError']&& !email.errors['required']">
+                          email is in correct
+                        </span>
+                      </span>
+                    </div>
+                    <div class="form-group ">
+                      <label for="Password">Password</label>
+                    <input type="password" placeholder="Password"  formControlName="password"
+                    class="form-control" aria-label="Text input with checkbox">
+                      <span *ngIf="!password.valid&&password.touched" class="grey">
+                        <span *ngIf="password.errors['required']">
+                          this is field is required
+                        </span>
+                      </span>
+                    </div>
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary mr-3">Login</button>
+                    <!-- <a class="btn btn-primary" routerLink="/signUp">sign up</a> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

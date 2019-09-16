@@ -1,0 +1,16 @@
+@import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/functions';
+
+.grey{
+    color:red
+}
+.table td{
+    vertical-align: middle
+}
+.bg{
+    // background: #302d43
+    @extend %bg ;
+}
+.w-99{
+    width:99%
+}

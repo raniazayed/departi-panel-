@@ -1,0 +1,164 @@
+<div class="w-99">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 bg">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="container justify-content-center pt-5">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>brandModel</th>
+                            <!-- <th>startDate</th>
+                            <th>endDate</th> -->
+                            <th class="text-center"><button class="btn btn-success" [routerLink]="['/brand',id,flag1]"> Add
+                                    model</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let model of modelList" class="mb-5">
+                            <td>{{model.name}}</td>
+                            <!-- <td>{{model.from}}</td>
+                            <td>{{model.to}}</td> -->
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-danger" [routerLink]="['/brand',model.id,flag2]"
+                                        style="margin-left: 20px;">
+                                        Edit</button>
+                                    <!-- <button class="btn btn-danger" (click)="deleteModelList(model.id)"
+                                        style="margin-left: 20px;">
+                                        Delete</button> -->
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-navbar></app-navbar>
+<div class="container" *ngIf="modelList">
+    <div class="col-md-6 col-sm-12 text-right">
+        <button class="btn btn-success" [routerLink]="['/addModel']"> Add
+            model</button>
+    </div>
+    <form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>brandName</th>
+                    <th>brandModel</th>
+                    <th>startDate</th>
+                    <th>endDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let model of modelList" class="mb-5">
+                    <td>
+                        <div class="form-group">
+                            <select id="brand" placeholder="enter brand name"
+                                [class]="model.id"
+                                class="form-control"
+                                formControlName="brand_id"
+                                required>
+                                <option *ngFor="let brand of brands"
+                                    [value]="brand.name" [ngValue]="brand.id">{{brand.name}}</option>
+                            </select>
+                            <div class="red" *ngIf="brand_id.invalid &&
+                                brand_id.touched">
+                                brand Name is required!
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" type="text"
+                                [class]="model.id"
+                                id="name" placeholder="enter model name"
+                                [value]="model.name"
+                                formControlName="name" required />
+                            <div *ngIf="name.invalid && name.touched"
+                                class="red">
+                                model Name is required!
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" type="number"
+                                [class]="model.id" min="1900" max="2030"
+                                onkeydown="javascript: return event.keyCode ===
+                                8 || event.keyCode === 46 ? true :
+                                !isNaN(Number(event.key))"
+                                id="from" placeholder="enter startDate"
+                                formControlName="from" required
+                                [value]="model.from" ng-model="from"
+                                minlength="4" maxlength="4" />
+                        </div>
+                        <div class="red" *ngIf="from.invalid &&
+                            from.touched">
+                            <div *ngIf="from.errors['required']">
+                                startDate is required!
+                                <div class="red"
+                                    *ngIf="!from.errors['required'] &&
+                                    from.errors['dateerror']">
+                                    startDate isn't correct!
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" type="number"
+                                [class]="model.id" min="1900" max="2030"
+                                onkeydown="javascript: return event.keyCode ===
+                                8 || event.keyCode === 46 ? true :
+                                !isNaN(Number(event.key))"
+                                id="to" placeholder="enter endDate"
+                                [value]="model.to"
+                                formControlName="to" required
+                                (change)='checkErr(from,to)' ng-model="to"
+                                minlength="4" maxlength="4" />
+                            <div class="red" *ngIf="to.invalid &&
+                                to.touched">
+                                <div *ngIf="to.errors['required']">
+                                    endDate is required!
+                                    <div class="red"
+                                        *ngIf="!to.errors['required'] &&
+                                        to.errors">
+                                        endDate isn't correct!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+
+                    <td>
+                        <div class="" [id]="model.id">
+                            <button *ngIf="editable" type="submit"
+                                [disabled]="modelForm.invalid"
+                                class="btn btn-success">
+                                add
+                            </button>
+                            <button *ngIf="!editable" class="btn btn-danger"
+                                (click)="editModellList(model.id)"
+                                style="margin-left: 20px;">
+                                Edit</button>
+                            <button class="btn btn-danger"
+                                (click)="deleteModellList(model.id)"
+                                style="margin-left: 20px;">
+                                Delete</button>
+                        </div>
+                    </td>
+                    <span class="grey">{{errMessage}}</span>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+
+</div> -->

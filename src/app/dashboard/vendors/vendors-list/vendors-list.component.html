@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container">
+        <div class="col-md-6 col-sm-12 text-right">
+                <button class="btn btn-success" [routerLink]="['/vendors',flag1]"> Add vendor</button>
+        </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vendor of vendorsList" class="mb-5">
+                <td>{{vendor.name}}</td>
+                <td>{{vendor.address}}</td>
+                <td>
+                    <div class="">
+                        <button class="btn btn-danger" [routerLink]="['/vendors',flag2,vendor.id]"  style="margin-left: 20px;">
+                          Edit</button>
+                          <button class="btn btn-danger" (click)="deleteVendorList(vendor.id)" style="margin-left: 20px;">
+                          Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container" *ngIf="fleetList">
+        <div class="col-md-6 col-sm-12 text-right">
+                <button class="btn btn-success" [routerLink]="['/fleet',flag1]"> Add fleet</button>
+        </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fleet of fleetList" class="mb-5">
+                <td>{{fleet.name}}</td>
+                <td>{{fleet.address}}</td>
+                <td>
+                    <div class="">
+                        <button class="btn btn-danger" [routerLink]="['/fleet',flag2,fleet.id]"  style="margin-left: 20px;">
+                          Edit</button>
+                          <button class="btn btn-danger" (click)="deleteFleetList(fleet.id)" style="margin-left: 20px;">
+                          Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
